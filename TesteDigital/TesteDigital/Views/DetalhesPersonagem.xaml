@@ -5,16 +5,25 @@
 
   <ContentPage.Content>
     <StackLayout VerticalOptions="StartAndExpand">
-      <Label Text="Name" />
-      <Entry x:Name="nameEntry" Text="{Binding Path=Name}" Placeholder="task name" />
-      <Label Text="Notes" />
-      <Entry x:Name="notesEntry" Text="{Binding Path=Notes}" />
-      <Label Text="Done" />
-      <Switch x:Name="doneSwitch" IsToggled="{Binding Path=Done}" />
-      <Button Text="Save" Clicked="OnSaveActivated" />
-      <Button Text="Delete" Clicked="OnDeleteActivated" />
-      <Button Text="Cancel" Clicked="OnCancelActivated" />
-      <Button Text="Speak" Clicked="OnSpeakActivated" />
+      <Image x:Name="Image" Source="{Binding Path=ImageURL}"  Aspect="AspectFill"  HeightRequest ="75" WidthRequest="75" />
+      <Label Text="Name:" />
+      <Entry x:Name="nameEntry" Text="{Binding Path=name}"/>
+      <Label Text="Descrição:" />
+      <Entry x:Name="DescriptionEntry" Text="{Binding Path=description}" />
+      <Label Text="Faciculos:" />
+      <ListView x:Name="listView" ItemsSource="{Binding faciculos}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                <Image x:Name="Image" Source="{Binding Path=ImageURL}" Aspect="AspectFill"  HeightRequest ="48" WidthRequest="48"/>
+                <Label Text="{Binding name}" VerticalTextAlignment="Center" />
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+       <Button Text="Voltar" Clicked="OnVoltar" />
     </StackLayout>
   </ContentPage.Content>
   

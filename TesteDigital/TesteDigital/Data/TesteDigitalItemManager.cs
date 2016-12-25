@@ -20,14 +20,5 @@ namespace TodoREST
             return restService.RefreshDataAsync();
         }
 
-        public Task SaveTaskAsync(Personagem item, bool isNewItem = false)
-        {
-            return restService.SaveTodoItemAsync(item, isNewItem);
-        }
-
-        public Task DeleteTaskAsync(Personagem item)
-        {
-            return restService.DeleteTodoItemAsync(item.ID);
-        }
     }
 }

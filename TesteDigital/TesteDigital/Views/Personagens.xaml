@@ -9,7 +9,7 @@
         <DataTemplate>
           <ViewCell>
             <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-              <Label Text="{Binding Name}" VerticalTextAlignment="Center" />
+              <Label Text="{Binding name}" VerticalTextAlignment="Center" />
             </StackLayout>
           </ViewCell>
         </DataTemplate>

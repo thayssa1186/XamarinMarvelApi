@@ -36,23 +36,14 @@ namespace TesteDigital
             listView.ItemsSource = await App.TesteDigitalManager.GetTasksAsync();
         }
 
-        void OnAddItemClicked(object sender, EventArgs e)
-        {
-            var todoItem = new Personagem()
-            {
-                ID = Guid.NewGuid().ToString()
-            };
-            var todoPage = new DetalhesPersonagem(true);
-            todoPage.BindingContext = todoItem;
-            Navigation.PushAsync(todoPage);
-        }
+      
 
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var todoItem = e.SelectedItem as Personagem;
-            var todoPage = new DetalhesPersonagem();
-            todoPage.BindingContext = todoItem;
-            Navigation.PushAsync(todoPage);
+            var personagemItem = e.SelectedItem as Personagem;
+            var detalhePersonagemItem = new DetalhesPersonagem();
+            detalhePersonagemItem.BindingContext = personagemItem;
+            Navigation.PushAsync(detalhePersonagemItem);
         }
 
     }
