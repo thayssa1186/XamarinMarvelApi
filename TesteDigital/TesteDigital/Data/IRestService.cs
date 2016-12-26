@@ -9,9 +9,5 @@ namespace TesteDigital
     public interface IRestService
     {
         Task<List<Personagem>> RefreshDataAsync();
-
-        Task SaveTodoItemAsync(Personagem item, bool isNewItem);
-
-        Task DeleteTodoItemAsync(string id);
     }
 }

@@ -13,9 +13,9 @@ namespace WebServiceMarvel.Service
         const string publicKey = "fc3fd7f1f04ecb2cc9922e5af2613a70";
         const string privateKey = "8870d7a864d3963cb915de22fd7dca1e9cdd83da";
 
-        public static PersonagemDTO characters()
+        public static List<PersonagemDTO> characters()
         {
-            var p = new PersonagemDTO();
+            var listPersonagens = new List<PersonagemDTO>();           
 
             var client = new MarvelRestClient(publicKey, privateKey);
 
@@ -23,23 +23,34 @@ namespace WebServiceMarvel.Service
 
             foreach (var character in response.Data.Results)
             {
+
+                var p = new PersonagemDTO();
+                var c = new List<FaciculoDTO>();                
+
                 p.id = character.Id.ToString();
-                p.name = character.Description;
+                p.name = character.Name;
+                p.description = string.IsNullOrEmpty(character.Description)? "Descrição não localizada" : character.Description;
                 p.ImageURL = character.Thumbnail.Path + "." + character.Thumbnail.Extension;
 
                 foreach (var commics in character.Comics.Items)
                 {
-                    p.faciculos.Add(comics(commics.ResourceURI));
+                    var result = comics(commics.ResourceURI);
+                    c.Add(result);
 
-                }                
+                }
+
+                p.faciculos = c;
+                listPersonagens.Add(p);
+
             }
 
-            return p;
+            return listPersonagens;
         }
 
-        public static PersonagemDTO characters(string Namecharacters)
+        public static List<PersonagemDTO> characters(string Namecharacters)
         {
-            var p = new PersonagemDTO();
+           
+            var listPersonagens = new List<PersonagemDTO>();
 
             var client = new MarvelRestClient(publicKey, privateKey);
             CharacterRequestFilter filter = new CharacterRequestFilter();
@@ -48,18 +59,28 @@ namespace WebServiceMarvel.Service
 
             foreach (var character in response.Data.Results)
             {
+
+                var p = new PersonagemDTO();
+                var c = new List<FaciculoDTO>();
+
                 p.id = character.Id.ToString();
-                p.name = character.Description;
+                p.name = character.Name;
+                p.description = string.IsNullOrEmpty(character.Description) ? "Descrição não localizada" : character.Description;
                 p.ImageURL = character.Thumbnail.Path + "." + character.Thumbnail.Extension;
 
                 foreach (var commics in character.Comics.Items)
                 {
-                    p.faciculos.Add(comics(commics.ResourceURI));
+                    var result = comics(commics.ResourceURI);
+                    c.Add(result);
 
                 }
-               
+
+                p.faciculos = c;
+                listPersonagens.Add(p);
+
             }
-            return p;
+
+            return listPersonagens;
         }
 
         public static FaciculoDTO comics(string urlComics)
