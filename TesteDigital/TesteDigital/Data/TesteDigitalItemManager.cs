@@ -62,7 +62,7 @@ namespace TesteDigital
                     return result;
                 }
             }
-            else if (sync.data.AddMinutes(5) <= DateTime.Now)
+            else if (sync.data.AddDays(7) <= DateTime.Now)
             {
                 try
                 {
