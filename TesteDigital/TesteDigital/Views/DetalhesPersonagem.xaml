@@ -9,14 +9,14 @@
       <Label Text="Name:" />
       <Entry x:Name="nameEntry" Text="{Binding Path=name}"/>
       <Label Text="Descrição:" />
-      <Entry x:Name="DescriptionEntry" Text="{Binding Path=description}" />
-      <Label Text="Faciculos:" />
-      <ListView x:Name="listView" ItemsSource="{Binding faciculos}">
+      <Editor x:Name="DescriptionEntry"  Text="{Binding Path=description}" IsEnabled="False" VerticalOptions="FillAndExpand" />
+      <Label Text="Fascículos:" />
+      <ListView x:Name="listView" ItemsSource="{Binding Fasciculos}">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                <Image x:Name="Image" Source="{Binding Path=ImageURL}" Aspect="AspectFill"  HeightRequest ="48" WidthRequest="48"/>
+                <Image x:Name="Image" Source="{Binding Path=ImageURL}" Aspect="AspectFit"  HeightRequest ="48" WidthRequest="48"/>
                 <Label Text="{Binding name}" VerticalTextAlignment="Center" />
               </StackLayout>
             </ViewCell>

@@ -25,7 +25,7 @@ namespace WebServiceMarvel.Service
             {
 
                 var p = new PersonagemDTO();
-                var c = new List<FaciculoDTO>();                
+                var c = new List<FasciculoDTO>();                
 
                 p.id = character.Id.ToString();
                 p.name = character.Name;
@@ -35,11 +35,13 @@ namespace WebServiceMarvel.Service
                 foreach (var commics in character.Comics.Items)
                 {
                     var result = comics(commics.ResourceURI);
+                    result.idPersonagem = p.id;
+
                     c.Add(result);
 
                 }
 
-                p.faciculos = c;
+                p.Fasciculos = c;
                 listPersonagens.Add(p);
 
             }
@@ -61,7 +63,7 @@ namespace WebServiceMarvel.Service
             {
 
                 var p = new PersonagemDTO();
-                var c = new List<FaciculoDTO>();
+                var c = new List<FasciculoDTO>();
 
                 p.id = character.Id.ToString();
                 p.name = character.Name;
@@ -75,7 +77,7 @@ namespace WebServiceMarvel.Service
 
                 }
 
-                p.faciculos = c;
+                p.Fasciculos = c;
                 listPersonagens.Add(p);
 
             }
@@ -83,9 +85,9 @@ namespace WebServiceMarvel.Service
             return listPersonagens;
         }
 
-        public static FaciculoDTO comics(string urlComics)
+        public static FasciculoDTO comics(string urlComics)
         {
-            var c = new FaciculoDTO();
+            var c = new FasciculoDTO();
             var id = urlComics.Substring(urlComics.Length - 5);
             var client = new MarvelRestClient(publicKey, privateKey);
 

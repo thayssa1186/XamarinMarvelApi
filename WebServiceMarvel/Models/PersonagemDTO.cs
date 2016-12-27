@@ -11,13 +11,14 @@ namespace WebServiceMarvel.Models
         public string name { get; set; }
         public string description { get; set; }
         public string ImageURL { get; set; }
-        public List<FaciculoDTO> faciculos { get; set; }
+        public List<FasciculoDTO> Fasciculos { get; set; }
 
 
 }
-    public class FaciculoDTO
+    public class FasciculoDTO
     {
         public string id { get; set; }
+        public string idPersonagem { get; set; }
         public string name { get; set; }
         public string ImageURL { get; set; }
 

@@ -1,11 +1,6 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using Android.App;
 using Android.OS;
+using Android.Content.PM;
 
 namespace TesteDigital.Droid
 {

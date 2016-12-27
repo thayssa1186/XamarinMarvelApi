@@ -43,7 +43,7 @@ namespace TesteDigital
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
             }
 
             return Items;
