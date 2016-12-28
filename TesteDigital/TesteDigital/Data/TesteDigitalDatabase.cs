@@ -42,8 +42,16 @@ namespace TesteDigital
 
         public Task<SincronizacaoEN> GetSincronizacaoAsync()
         {
-            var result = database.Table<SincronizacaoEN>().OrderByDescending(t => t.data).FirstOrDefaultAsync();
-            return result;
+
+            try
+            {
+                var result = database.Table<SincronizacaoEN>().OrderByDescending(t => t.data).FirstOrDefaultAsync();
+                return result;
+
+            }catch(SQLiteException sqlex)
+            {
+                return null;
+            }
         }
 
         /*public Task<List<Personagem>> GetItemsNotDoneAsync()
